@@ -1,21 +1,11 @@
 
-class EmployeePayroll {
-  constructor() {
-    this.name = "";
-    this.profile = "";
-    this.gender = "";
-    this.department = [];
-    this.salary = 0;
-    this.notes = "";
-  }
-
-  setName(name) {
-    if (name && name.trim().length >= 3 && /^[A-Z][A-Za-z\s]*$/.test(name)) {
-      this.name = name.trim();
-    } else {
-      throw new Error("Invalid name! Name must start with a capital letter and have a minimum of 3 characters.");
-    }
-  }
+function EmployeePayroll(name, gender, department, salary, startDate, notes) {
+  var _name = name;
+  var _gender = gender;
+  var _department = department;
+  var _salary = salary;
+  var _startDate = startDate;
+  var _notes = notes;
 
   Object.defineProperty(this, "name", {
       get: function() {
@@ -77,10 +67,3 @@ class EmployeePayroll {
       }
   });
 }
-
-const salaryRange = document.getElementById('salary');
-const salaryOutput = document.querySelector('.salary-output');
-
-salaryRange.addEventListener('input', function() {
-  salaryOutput.textContent = salaryRange.value;
-});
