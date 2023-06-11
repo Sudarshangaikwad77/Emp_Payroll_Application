@@ -175,7 +175,7 @@ const getInputElementValue = (id) => {
 
 const resetForm = () => {
 setValue( '#name','');
-unsetSelectedValues( ' [name=profilel');
+unsetSelectedValues( ' [name=profilel]');
 unsetSelectedValues( ' [name=gender] ');
 unsetSelectedValues ( ' [name=department] ');
 setValue('#salary','');
