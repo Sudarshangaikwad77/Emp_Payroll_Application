@@ -91,33 +91,35 @@ class EmployeePayrollData {
     }
   }
 
-  window. addEventListener( 'DOMContentLoaded', (event) => {
-    const name = document.querySelector('#name') ;
-    const textError = document.querySelector('.text-error');
+  window.addEventListener( "DOMContentLoaded", (event) => {
+    const name = document.querySelector("#name");
+    const textError = document.querySelector(".text-error");
     name.addEventListener('input', function() {
     if (name. value. length == 0) {
     textError.textContent = "";
     return;
     }
     try {
-    (new EmployeePayrollData()).name = name. value; ;
-    textError.textContent = "";
+    new EmployeePayrollData().name = name.value;
+    textError.textContent = '';
     } catch (e) {
     textError.textContent = e;
     }
   });
-  const salary = document.querySelector('#salary');
-  const output = document. querySelector('.salary-output');
-  output. textContent = salary.value;
-  salary. addEventListener('input', function() {
+  const salary = document.querySelector("#salary");
+  const output = document. querySelector(".salary-output");
   output.textContent = salary.value;
-});
+  salary.addEventListener("input", function() {
+  output.textContent = salary.value;
   });
+});
     
   const save = () => {
     try {
     let employeePayrollData = createEmployeePayroll();
+    console.log("employeePayrollData",employeePayrollData);
     createAndUpdateStorage(employeePayrollData);
+    console.log("All Data: ",JSON.parse(localStorage.getItem("EmployeePayrollList")));
     } catch (e) {
     return;
     }
@@ -126,7 +128,7 @@ class EmployeePayrollData {
   function createAndUpdateStorage(employeePayrollData) {
     let employeePayrollList = JSON.parse(localStorage.getItem("EmployeePayrollList"));
     if(employeePayrollList != undefined) {
-    emplloyeePayrollList. push(employeePayrollData) ;
+    employeePayrollList.push(employeePayrollData) ;
     } else{
     employeePayrollList = [employeePayrollData]
     }
@@ -146,7 +148,7 @@ employeePayrollData.profilePic = getSelectedValues(' [name=profile]').pop();
 employeePayrollData.gender = getSelectedValues(' [name=gender]').pop();
 employeePayrollData.department = getSelectedValues(' [name=department] ');
 employeePayrollData.salary = getInputValueById('#salary');
-employeePayrollData.note = getInputValueByld('#notes');
+employeePayrollData.note = getInputValueById('#notes');
 let date = getInputValueById('#day')+" "+getInputValueById('#month')+" "+
 getInputValueById('#year') ;
 employeePayrollData.date = Date.parse(date) ;
@@ -174,6 +176,7 @@ const getInputElementValue = (id) => {
 }
 
 const resetForm = () => {
+console.log("reset form");
 setValue( '#name','');
 unsetSelectedValues( ' [name=profilel]');
 unsetSelectedValues( ' [name=gender] ');
