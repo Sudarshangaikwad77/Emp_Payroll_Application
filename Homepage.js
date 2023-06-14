@@ -1,4 +1,3 @@
-
 let empPayrollList;
 window.addEventListener('DOMContentLoaded', (event) => {
     empPayrollList = getEmployeePayrollDataFromStorage();
@@ -27,9 +26,9 @@ const createInnerHtml = () => {
     <td>${empPayrollData._salary}</td>
     <td>${stringifyDate(empPayrollData._startDate)}</td>
     <td>
-       <img id="${empPayrollData._id}"  onclick="remove(this)" 
+       <img id="${empPayrollData.id}"  onclick="remove(this)" 
             src="../Assets/icons/delete-black-18dp.svg" alt="delete">
-       <img id="${empPayrollData._id}"  onclick="update(this)" 
+       <img id="${empPayrollData.id}"  onclick="update(this)" 
             src="../Assets/icons/create-black-18dp.svg" alt="edit">  
     </td>
     </tr>
@@ -48,11 +47,11 @@ const getDeptHtml = (deptList) => {
 
 //D40UC1
 const remove = (node) => {
-    let empPayrollData = empPayrollList.find(empData => empData._id == node.id);
+    let empPayrollData = empPayrollList.find(empData => empData.id == node.id);
     if (!empPayrollData) return;
     const index = empPayrollList
-                  .map(empData => empData._id)
-                  .indexOf(empPayrollData._id);
+                  .map(empData => empData.id)
+                  .indexOf(empPayrollData.id);
     empPayrollList.splice(index, 1);
     localStorage.setItem('EmployeePayrollList', JSON.stringify(empPayrollList));
     document.querySelector('.emp-count').textContent = empPayrollList.length;
