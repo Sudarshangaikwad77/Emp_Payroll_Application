@@ -159,37 +159,17 @@
     </div>
     </form>
     </div>
+    <script type="text/JavaScript" src="home.js"></script>
+    <script type="text/JavaScript" src="utility.js"></script>
+    <script type="text/JavaScript" src="EmployeePayrollData.js"></script> 
+    <script src="site_properties.js"></script>  
     <script>
-        function displaySalaryValue() {
-           var salaryRange = document.getElementById("salary");
-           var salaryOutput = document.querySelector(".salary-output");
-           salaryOutput.textContent = salaryRange.value;
-       }
-   
-       function populateEmployeeData() {
-       let name = document.getElementById("name").value;
-       let profile = document.querySelector("input[name='profile']:checked").value;
-       let gender = document.querySelector("input[name='gender']:checked").value;
-       let departments = [];
-       let departmentCheckboxes = document.querySelectorAll("input[name='department']:checked");
-       departmentCheckboxes.forEach(function(checkbox) {
-         departments.push(checkbox.value);
-       });
-       let salary = document.getElementById("salary").value;
-       let startDate = document.getElementById("day").value + "-" + document.getElementById("month").value + "-" + document.getElementById("year").value;
-       let notes = document.getElementById("notes").value;
-       let employeeData = new EmployeePayrollData(name, profile, gender, departments, salary, startDate, notes);
-       if (employeeData.validateData()) {
-         console.log("Employee Data:", employeeData);
-       } else {
-         console.log("Validation Error: Invalid employee data");
-       }
-     }  
-   </script>
-   
-    <script type="text/JavaScript" src="Emp.js"></script>
-    <script type="text/JavaScript" src="EmployeePayrollData.js"></script>   
-     
+      const rangeVar = document.querySelector("#salary");
+      rangeVar.addEventListener("click", function(){
+          let rangeValue = document.getElementById("salary");
+          document.getElementById("salaryOutput").value = rangeValue.value;
+      });
+  </script>   
     </body>
     </html>
      
